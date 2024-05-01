@@ -1,4 +1,4 @@
-package com.example.concurrency.exam2;
+package com.example.concurrency.threadrunnable;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
