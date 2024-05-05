@@ -8,7 +8,7 @@ public class ThreadLocalTest {
 
     /**
      * Thread를 생성 후 ThreadLocal의 get 메서드를 호출 시 ThreadLocalMap이 null 이면
-     * 해당 Thread에서만 사용할 수 있는 ThreadMap을 만든다.
+     * 해당 Thread에서만 사용할 수 있는 ThreadLocalMap을 만든다.
      */
     @Test
     public void threadLocalTest_01() throws Exception {
