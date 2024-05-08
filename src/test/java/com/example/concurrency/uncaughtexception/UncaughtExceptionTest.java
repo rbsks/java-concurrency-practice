@@ -1,11 +1,11 @@
 package com.example.concurrency.uncaughtexception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchException;
 
 /**
  * 스레드에서 발생한 예외를 throw 하여 처리하고 싶은 경우에는
