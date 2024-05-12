@@ -53,4 +53,31 @@ public class MonitorTest {
         log.info("bankAccount1 balance: {}", bankAccount1.getBalance());
         log.info("bankAccount2 balance: {}", bankAccount2.getBalance());
     }
+
+    @Test
+    public void produceAndConsumeTest() {
+        ShareQueue queue = new ShareQueue();
+
+        Thread produce = new Thread(() -> {
+            for (int i = 0; i < 20; i++) {
+                queue.produce(i);
+            }
+        }, "produce");
+
+        Thread consume = new Thread(() -> {
+            for (int i = 0; i < 20; i++) {
+                queue.consume();
+            }
+        }, "consume");
+
+        produce.start();
+        consume.start();
+
+        try {
+            produce.join();
+            consume.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
