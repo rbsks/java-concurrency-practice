@@ -1,5 +1,6 @@
 package com.example.concurrency.lock;
 
+import com.example.concurrency.util.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ public class ReentrantLockTest {
             }
         }, "Thread-1");
 
-        startAndJoinThread(thread1, thread2);
+        ThreadUtil.startAndJoinThread(thread1, thread2);
 
         log.info("count: {}", countLock.getCount());
     }
@@ -62,7 +63,7 @@ public class ReentrantLockTest {
             }
         });
 
-        startAndJoinThread(thread1, thread2);
+        ThreadUtil.startAndJoinThread(thread1, thread2);
     }
 
     /**
@@ -120,7 +121,7 @@ public class ReentrantLockTest {
             }
         }, "Thread-2");
 
-        startAndJoinThread(thread1, thread2);
+        ThreadUtil.startAndJoinThread(thread1, thread2);
     }
 
     /**
@@ -169,20 +170,6 @@ public class ReentrantLockTest {
             }
         }, "Thread-2");
 
-        startAndJoinThread(thread1, thread2);
-    }
-
-    private void startAndJoinThread(Thread... threads) {
-        for (Thread thread : threads) {
-            thread.start();
-        }
-
-        for (Thread thread : threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        ThreadUtil.startAndJoinThread(thread1, thread2);
     }
 }
