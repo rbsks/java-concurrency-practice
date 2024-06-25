@@ -14,8 +14,9 @@ public class AsyncConfig {
     @Bean("customThreadPool")
     public Executor customThreadPool() {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setCorePoolSize(2);
-        threadPoolTaskExecutor.setMaxPoolSize(2);
+        threadPoolTaskExecutor.setCorePoolSize(Runtime.getRuntime().availableProcessors());
+        threadPoolTaskExecutor.setMaxPoolSize(Runtime.getRuntime().availableProcessors());
+        threadPoolTaskExecutor.setPrestartAllCoreThreads(true);
         threadPoolTaskExecutor.setThreadNamePrefix("custom-thread-");
         threadPoolTaskExecutor.setPrestartAllCoreThreads(true);
         return threadPoolTaskExecutor;
